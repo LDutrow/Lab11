@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-# ----------------- LOAD STUDENTS -----------------
+
 def load_students(path):
     students = {}
     with open(path) as f:
@@ -16,7 +16,7 @@ def load_students(path):
     return students
 
 
-# ----------------- LOAD ASSIGNMENTS -----------------
+
 def load_assignments(path):
     assignments = {}
     with open(path) as f:
@@ -29,7 +29,7 @@ def load_assignments(path):
     return assignments
 
 
-# ----------------- LOAD SUBMISSIONS -----------------
+
 def load_submissions(directory):
     submissions = {}
     for filename in os.listdir(directory):
@@ -47,14 +47,14 @@ def load_submissions(directory):
                 sid, aid, pct = parts
                 sid = sid.strip()
                 aid = aid.strip()
-                pct = float(pct.strip()) / 100  # convert 0-100 to 0-1
+                pct = float(pct.strip()) / 100  
                 if aid not in submissions:
                     submissions[aid] = {}
                 submissions[aid][sid] = pct
     return submissions
 
 
-# ----------------- OPTION 1 -----------------
+
 def calculate_student_grade(student_name, students, assignments, submissions):
     if student_name not in students:
         print("Student not found")
@@ -70,7 +70,7 @@ def calculate_student_grade(student_name, students, assignments, submissions):
     print(f"{final_grade}%")
 
 
-# ----------------- OPTION 2 -----------------
+
 def assignment_stats(aname, assignments, submissions):
     if aname not in assignments:
         print("Assignment not found")
@@ -82,7 +82,7 @@ def assignment_stats(aname, assignments, submissions):
     print(f"Max: {int(max(scores))}%")
 
 
-# ----------------- OPTION 3 -----------------
+
 def assignment_graph(aname, assignments, submissions):
     if aname not in assignments:
         print("Assignment not found")
@@ -96,7 +96,6 @@ def assignment_graph(aname, assignments, submissions):
     plt.show()
 
 
-# ----------------- MAIN MENU -----------------
 def main():
     students = load_students("data/students.txt")
     assignments = load_assignments("data/assignments.txt")
